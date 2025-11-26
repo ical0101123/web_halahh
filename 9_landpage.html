@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Gidal Gidul - Layanan Kuliner</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgb(1, 1, 25), rgb(0, 50, 100));
+            padding: 30px 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: aquamarine;
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        nav a {
+            margin: 0 20px;
+            color: rgba(10, 10, 10, 0.944);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+            text-decoration: none;
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: url(download5.jpg) no-repeat center center/cover;
+            text-align: center;
+            height: 500px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            z-index: 1;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        #Layanan h2, #Kontak h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: rgb(1, 1, 25);
+        }
+
+        .services {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .service {
+            flex: 1;
+            min-width: 280px;
+            background: linear-gradient(135deg, rgb(107, 174, 233), rgb(80, 150, 210));
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+
+        .service p {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        /* Form Styling */
+        .contact-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: rgb(1, 1, 25);
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: rgb(107, 174, 233);
+            box-shadow: 0 0 0 3px rgba(107, 174, 233, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, rgb(41, 150, 60), rgb(30, 120, 45));
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(41, 150, 60, 0.3);
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, rgb(30, 120, 45), rgb(41, 150, 60));
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(41, 150, 60, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .required {
+            color: red;
+        }
+
+        footer {
+            background: linear-gradient(135deg, rgb(41, 150, 60), rgb(30, 120, 45));
+            padding: 20px 0;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+
+        footer p {
+            font-size: 1.1em;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 1em;
+            }
+
+            .services {
+                flex-direction: column;
+            }
+
+            .service {
+                min-width: 100%;
+            }
+
+            .contact-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>WARKOP CIHUY</h1>
+        <p>Anda jenuhh? ngopi dulu</p>
+    </header>
+
+    <nav>
+        <a href="#home">Beranda</a>
+        <a href="#Layanan">Layanan</a>
+        <a href="#Kontak">Kontak</a>
+    </nav>
+
+    <section id="home" class="hero">
+        <h1>Selamat Datang BROO</h1>
+    </section>
+
+    <section id="Layanan">
+        <h2>Layanan Kami</h2>
+        <div class="services">
+            <div class="service">
+                <h3>🍢 Jasa Gorengan</h3>
+                <p>Kami menyediakan mendoan, tahu goreng, dan mantang dengan cita rasa khas yang menggugah selera</p>
+            </div>
+            <div class="service">
+                <h3>🍜 Jasa Mie</h3>
+                <p>Kami menyediakan Indomie, Sukses, Sarimi dengan berbagai varian rasa yang nikmat</p>
+            </div>
+            <div class="service">
+                <h3>☕ Jasa Minum</h3>
+                <p>Kami menyediakan kopi, teh, jus, Marimas, dan Sisri untuk menemani hari Anda</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="Kontak">
+        <h2>Hubungi Kami</h2>
+        <div class="contact-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap <span class="required">*</span></label>
+                    <input type="text" id="nama" name="nama" required placeholder="Masukkan nama lengkap Anda">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="contoh@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="telepon">Nomor Telepon <span class="required">*</span></label>
+                    <input type="tel" id="telepon" name="telepon" required placeholder="08xxxxxxxxxx">
+                </div>
+
+                <div class="form-group">
+                    <label for="layanan">Pilih Layanan <span class="required">*</span></label>
+                    <select id="layanan" name="layanan" required>
+                        <option value="">-- Pilih Layanan --</option>
+                        <option value="gorengan">Jasa Gorengan</option>
+                        <option value="mie">Jasa Mie</option>
+                        <option value="minum">Jasa Minum</option>
+                        <option value="paket">Paket Lengkap</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pesan">Pesan / Catatan</label>
+                    <textarea id="pesan" name="pesan" placeholder="Tulis pesan atau catatan khusus Anda di sini..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="setuju" name="setuju" required>
+                        Saya setuju dengan syarat dan ketentuan <span class="required">*</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 PT. Gidal Gidul - Semua Hak Dilindungi</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling untuk navigasi
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const telepon = document.getElementById('telepon').value;
+            const layanan = document.getElementById('layanan').value;
+            const pesan = document.getElementById('pesan').value;
+            
+            // Simulasi pengiriman form
+            alert(`Terima kasih ${nama}!\n\nData Anda telah kami terima:\n✓ Email: ${email}\n✓ Telepon: ${telepon}\n✓ Layanan: ${layanan}\n\nKami akan menghubungi Anda segera!`);
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>
